@@ -90,6 +90,22 @@ if we are using that + sign then under the parent tag <aliens></aliens> we can w
 -->
 PCDATA stand for Pass Character Data.
 
+XML Schema
+AlienSchema.xsd file...
+<schema xmlns="http://www.w3.org/2001/XMLSchema"></schema>
+here in xmlns ns stands for name space.
+Whenever we are talking about xmlns  we are talking about two things..
+-> URI - Uniform Resource Identifier.
+-> PREFIX
+
+When we want to fetch something from the internet we are using url(Uniform Resource Locator), but this time the definition of your tag is there in your system so we are using URI.
+
+Now when we are working with name space, to access the namespace we have to use one prefix that is tns, where tns stands for target name space.
+we are having two types 
+-> simple type
+-> complex type
+if inside an element if we are having another element then it should be complex in nature.
+
 
 
 
