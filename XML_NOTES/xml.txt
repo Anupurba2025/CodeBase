@@ -1,0 +1,95 @@
+XML
+-----------------------------------------------------------------------
+XML stands for eXtensible Markup Language.
+
+CLIENT <----------------> SERVER
+1.HTML -> Layout, Data
+2.XML -> Data.
+We can use xml in
+1. Transfer Data -> XML,JSON
+2. Configure Framework
+3. Design the layout
+4. xml is case sensitive.
+5. Every attribute value should inside double quote / single quote.
+
+
+Configure your server or Framework we are using the xml, in android to design a page we are using xml, in spring framework to design the spring dependency we are using xml.
+
+To create a XML file we need to follow up some rules..
+Rule 1 : Every Opening tag needs a closing tags.
+Rule 2 : Every XML file needs a root tag.
+
+<aliens>      <---------- Root Tag
+  <alien aid ="A1">  <------------This aid is working as attribute.
+    <name>Navin</name>
+    <sal>3000</sal>
+  </alien>
+  <alien aid ="A2">
+    <name>Mahi</name>
+    <sal>90000</sal>
+  </alien>
+</aliens>
+
+So in the above xml file we are having both the structure and the data. so we can specify one term that is Grammar.
+Grammar can be further divided into two parts..
+-> Structured Grammar = it tells about the Structure. We can define the structured Grammar with the help of DTD. Where DTD stands for Document Type Definition.
+-> Content Grammar = it tells about the contents. we can define the Content            Grammar with the help of Schema.
+
+We can use Schema to define both the grammars but using DTD we can only define Structured Grammar.
+
+<?xml version="1.0" encoding="UTF-8"?>
+Here in the above format 
+?xml -> it specifies that the file with which you are dealing with is xml file.
+
+encoding="UTF-8"? -> This is the encoding format
+This encoding format will be passed by the encoding parser.
+
+For Structured Grammar we need to specify the dtd.
+DTD is also one type of XML File.
+
+AlienType.dtd
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT aliens (alien+)>
+<!ELEMENT alien (name, salary)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT salary (#PCDATA)>
+<!--To specify the attribute we can write the below line-->
+<!ATTLIST alien aid ID #REQUIRED>
+
+Here,
+-->
+<!ELEMENT aliens (alien+)>
+here if we dont give the + sign after alien and write it as 
+<!ELEMENT aliens (alien)>
+then it simply means one parent tag / root tag can have only one child tag.
+
+so in that case under parent tag <aliens></aliens> we can simply use only one child tag <alien></alien> not more than that, otherwise it shows error.
+<aliens>      <---------- Root Tag
+  <alien aid ="A1">  <------------This aid is working as attribute.
+    <name>Navin</name>
+    <sal>3000</sal>
+  </alien>
+</aliens>
+
+if we are using that + sign then under the parent tag <aliens></aliens> we can write more than one child tag <alien></alien> without any error.
+<aliens>      <---------- Root Tag
+  <alien aid ="A1">  <------------This aid is working as attribute.
+    <name>Navin</name>
+    <sal>3000</sal>
+  </alien>
+  <alien aid ="A2">
+    <name>Mahi</name>
+    <sal>90000</sal>
+  </alien>
+</aliens>
+
+-->
+#REQUIRED means its a necessity condition to fulfill.
+
+-->
+PCDATA stand for Pass Character Data.
+
+
+
+
