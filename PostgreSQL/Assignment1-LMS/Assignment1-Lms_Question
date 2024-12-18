@@ -1,0 +1,135 @@
+Assignment Title: Library Management System
+
+
+
+Objective
+
+Design and query a database for managing books, authors, members, and borrowing records in a library.
+
+
+
+Steps and Requirements
+
+1. Create the Database Schema
+
+Create the following tables with the specified columns:
+
+• Books
+
+• BookID (Primary Key)
+
+• Title
+
+• AuthorID (Foreign Key)
+
+• Genre
+
+• PublishedYear
+
+• CopiesAvailable
+
+
+
+
+
+• Authors
+
+• AuthorID (Primary Key)
+
+• Name
+
+• Country
+
+• DateOfBirth
+
+• Members
+
+• MemberID (Primary Key)
+
+• Name
+
+• MembershipDate
+
+• Email
+
+
+
+
+
+
+
+• BorrowingRecords
+
+• RecordID (Primary Key)
+
+• MemberID (Foreign Key)
+
+• BookID (Foreign Key)
+
+• BorrowDate
+
+• ReturnDate
+
+
+
+2. Insert Sample Data
+
+Insert at least 5 rows into each table to simulate a library system. For example:
+
+• In the Books table, add books like “Rich dad poor dad,” “2000,” etc.
+
+• In the Authors table, include aurhors.
+
+• Add some Members with realistic names, emails, and membership dates.
+
+• Populate the BorrowingRecords table with borrowing history.
+
+
+
+3. Write Queries
+
+1. Basic Queries:
+
+• List all books and their authors.
+
+• Show all members who joined in the last year.
+
+• Display all books in the “Fiction” genre.
+
+2. Join Queries:
+
+• Find the names of members and the titles of books they have borrowed.
+
+• List books along with their authors’ names and countries.
+
+3. Aggregation Queries:
+
+• Count how many books are available for each genre.
+
+• Find the most borrowed book.
+
+4. Subqueries:
+
+• List the books written by authors who were born before 1950.
+
+• Find members who borrowed books published after 2010.
+
+5. Update and Delete Operations:
+
+• Update the CopiesAvailable when a book is borrowed or returned.
+
+• Delete a member’s record after their membership expires.
+
+6. Complex Query:
+
+• Find members who have borrowed more than 2 books in the last 6 months.
+
+
+
+Expected Deliverables
+
+• SQL scripts for creating tables.
+
+• SQL scripts for inserting sample data.
+
+• SQL file with answers to the queries.
