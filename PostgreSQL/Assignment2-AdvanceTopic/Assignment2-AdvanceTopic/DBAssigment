@@ -1,0 +1,74 @@
+
+
+SQL Assignment: Views, Materialized Views, and Indexing
+Instructions
+This assignment focuses on SQL concepts related to Views, Materialized Views, and Indexing.
+Provide SQL scripts and explanations where necessary.
+Test your scripts to ensure they work correctly on your database system.
+
+
+
+
+
+Task: Create a view named EmployeeDetails that displays the following columns from the Employees table:
+EmployeeID
+FirstName
+LastName
+Salary
+Follow-up: Write a query using this view to select all employees.
+
+
+2. Filtering Data in a View
+Task: Modify the EmployeeDetails view to include only employees with a salary greater than 40,000.
+Follow-up: Write a query to retrieve data from the updated view.
+
+
+3. Simple Materialized View Creation
+Task: Create a materialized view named ActiveProjects that displays all projects from the Projects table where DepartmentID is not null.
+Question: Explain the difference between a view and a materialized view in your own words.
+
+
+4. Creating an Index
+Task: Add an index on the DepartmentID column of the Employees table.
+Question: Describe how this index could improve query performance.
+
+
+5. Refreshing a Materialized View
+Task: Write the SQL command to refresh the ActiveProjects materialized view.
+Question: Explain why refreshing a materialized view is necessary.
+
+
+
+
+1. Creating a View with Joins
+Task: Create a view named DepartmentEmployeeView that joins the Employees and Departments tables to display the following:
+EmployeeID
+FullName (concatenate FirstName and LastName)
+DepartmentName
+Salary
+Follow-up: Write a query using this view to select all employees working in the "Sales" department.
+
+
+2. Parameterized Queries Using a View
+Task: Using the DepartmentEmployeeView, write a query to fetch all employees who have a salary greater than a parameterized value (e.g., greater than 60,000).
+
+
+3. Materialized View with Aggregate Functions
+Task: Create a materialized view named TopPaidEmployees that displays employees whose salary is in the top 10% of all salaries in the Employees table.
+Follow-up: Write a query using this materialized view to find the highest salary in each department.
+
+
+4. Creating a Composite Index
+Task: Create a composite index on the Employees table for the columns DepartmentID and Salary.
+Question: Explain how this composite index differs from having individual indexes on each column.
+
+
+5. Performance Analysis with Indexes
+Task: Write a query to count the number of employees with a salary greater than 50,000.
+Question: Explain how adding an index on the Salary column affects the performance of this query.
+
+
+
+
+
+
