@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--To import the dtd file here-->
+<!DOCTYPE aliens SYSTEM "AlienType.dtd">
+<aliens>
+    <alien aid ="A1" lang = "java">
+        <name>Navin Reddy</name>
+        <salary>8000</salary>
+    </alien>
+    <alien aid = 'A2' lang = "python">
+        <name>Mahi Kumar</name>
+        <salary>9000</salary>
+    </alien>
+</aliens>

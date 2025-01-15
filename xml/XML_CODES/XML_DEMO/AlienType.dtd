@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT aliens (alien+)>
+<!ELEMENT alien (name,salary)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT salary (#PCDATA)>
+
+<!--To specify the attribute we can write the below line-->
+<!ATTLIST alien aid ID #REQUIRED>
+<!ATTLIST alien lang (java|c|python) "java">

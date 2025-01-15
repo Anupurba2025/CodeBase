@@ -1,0 +1,73 @@
+JSON
+---------------------------------------
+JSON stands for Java Script Object Notation.
+
+Why JSON is so famous?
+
+before its used in web application, android, rest APIs. 
+When we are talking about JSON it simply talking about the format through which you can send the data from client to server and vice-versa.
+
+we are sending a asynchronous request from the client end to its servers end.
+in simple words asynchronous request means you are open one website from your mobile phone and send a request to server.. Irrespective of technology we are using in the server side, the only matter is from the client side to the server side the only thing we can send is data. When we are sending a request from client side to server side, in returns we can receive response from server side to client side.
+
+Now we don't want data in the format of html because it also send the designing part which is not required. then we can send it as plain text. we can do this.. but for a single line format or a paragraph it should be okay but what if we are trying to fetch the employee data from the server. a employee detail can contain multiple things such as employee_id, employee_name, salary, department, contact.. so if we send it in plain text format how can we fetch the one-one value and also its tough to understand. its better that we can send this data in a object format itself.
+
+When we are talking about JavaScript it has its own JavaScript object, array.
+Whatever you are sending it's in a object format and also readable by the JavaScript or java code from the client end. that's why we called it as JavaScript object notation. 
+
+Suppose we are having an android system in the client side and a java technology in the server side. now we know android systems are also using java technology. so technically we are having java in both the sides. Instead of a plain text we can send the objects from server end to client end. but currently the question is how can we send a object?
+
+So we have to serialize the object.. now serialize the object means simply we can fetch the values from the object, put it somewhere and send that something to your client side, and your client will read that and able to pass those values. It is possible when we can send this in a JSON format.
+
+for example -
+we are sending one employee details such as - 
+eid = 1
+eName = Navin
+salary = 6000
+department = Education
+
+now in JSON format it will be represented as 
+
+{
+    eid : "1",
+    eName : "Navin",
+    salary : "6000",
+    department : "Education";
+}
+
+now this JSON format will be sent from server side to the client side... Now in the client side let suppose it was stored in a variable called as emp..
+
+var emp = {
+    eid : "1",
+    eName : "Navin",
+    salary : "6000",
+    department : "Education";
+}
+
+now if we are using JavaScript in the client side... then its very easy to fetch the employee data such as emp.eid, emp.eName.... 
+
+Now if we are using android (java) in the client side. In android we are creating the java objects. when we are sending the response from the server side to the client side we need convert the java object -> JSON  format and again in client side we need to convert it into JSON format -> object. so for that we are having several libraries available such as GSON, Jackson etc.. Using this libraries we can easily convert our java code into JSON and JSON to java object easily...
+
+Now the question is JSON is the only thing to do that.. what if we are having object under a object or else collection of objects.
+suppose employee object has the information about list of mobile phones..
+
+eid = 1
+eName = Navin
+salary = 6000
+department = Education
+List<Mobile>
+
+Now how can we send the data, so whenever we are having a list we are having array type of data.
+
+{
+    eid : "1",
+    eName : "Navin",
+    salary : "6000",
+    department : "Education";
+    mobile : [ [],[],[] ]
+}
+
+That means JSON is an object and inside an JSON Object there is an array Object , and may be the mobile object has its own object, so inside this array object we are having another objects.
+
+Before JSON invented people are working with the xml.
+

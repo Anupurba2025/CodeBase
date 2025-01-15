@@ -1,0 +1,76 @@
+SQL Assignment Question: Advanced Query with GROUP BY, HAVING, and Inner Queries
+Scenario
+You are working for a company that maintains data on employees, departments, and projects. 
+Your task is to analyze and retrieve meaningful insights from this data using advanced SQL queries involving GROUP BY, HAVING, and inner queries.
+
+Assignment Questions
+1. Aggregated Data with GROUP BY
+Question: Retrieve the total number of employees and the average salary in each department where the total number of employees is greater than 5. Sort the results by the total number of employees in descending order.
+
+Tables:
+
+Employees
+EmployeeID, FirstName, LastName, DepartmentID, Salary
+
+Departments
+DepartmentID, DepartmentName
+
+
+Requirements:
+
+Use GROUP BY to group employees by department.
+Use the HAVING clause to filter departments with more than 5 employees.
+Use an INNER JOIN to fetch department names.
+
+
+2. Filtered Aggregation Using an Inner Query
+Question: Find all departments where the average salary of employees is greater than the overall average salary of all employees across the company.
+
+Requirements:
+Use an inner query to calculate the overall average salary.
+Use GROUP BY to calculate the average salary for each department.
+Use HAVING to filter departments based on the condition.
+
+
+3. Nested Query with HAVING
+Question: Identify the projects that are being managed by departments with an average salary greater than 75,000. Return the project name and the department name.
+
+Tables:
+
+Projects
+ProjectID, ProjectName, DepartmentID
+Departments
+DepartmentID, DepartmentName
+Employees
+EmployeeID, DepartmentID, Salary
+
+Requirements:
+Use an inner query to calculate the average salary for each department.
+Use HAVING to filter departments with an average salary > 75,000.
+Use INNER JOIN to match these departments with their projects.
+
+
+4. Advanced Grouping and Filtering
+Question: List the departments where at least 2 employees earn a salary greater than 90,000. For each such department, display the department name, total number of employees earning above 90,000, and the average salary of those employees.
+
+Requirements:
+Use GROUP BY to group employees by department.
+Use an inner query or HAVING clause to filter employees earning more than 90,000.
+Include aggregate functions (COUNT and AVG) in the result.
+
+5. Combining HAVING with Multiple Conditions
+Question: Find the top 3 departments (based on total salary of employees) where the number of employees is greater than 10, and the department name contains the word "Tech." Display the department name, total salary, and number of employees.
+
+Requirements:
+
+Use GROUP BY to group employees by department.
+Use HAVING for multiple conditions:
+Total salary > 10 employees
+Department name contains "Tech"
+Use an inner query with a LIMIT clause (if supported) to find the top 3 departments.
+
+Submission Requirements
+Provide the SQL query for each question.
+Include sample results (can be mocked if actual data isn’t available).
+Briefly explain how your query satisfies the requirements.
+Include execution plans if applicable.

@@ -1,0 +1,57 @@
+/* /* h1{
+    color: blue;
+    text-decoration: line-through;
+    background-color: yellow;
+}
+button{
+    background-color: blue;
+    color: white;
+}
+body{
+    background-color: pink;
+}
+h2{
+    visibility: hidden;
+} */
+ /*
+ LECTURE 7
+ #box{
+    height: 100px;
+    width: 100px;
+    border: 2px black solid;
+    text-align: center;
+    color: red;
+    background: yellow;
+    margin: 5px;
+ }
+ .content{
+    color: red;
+ }
+ .newclass{
+    background-color: yellow;
+ }  */
+
+/* LECTURE 8 */
+/* div{
+    height: 100px;
+    width: 100px;
+    background-color: dodgerblue;
+    color: white;
+    border: 1px solid black;
+} */
+
+/* PRACTICE QUESTION */
+/* body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.darkMode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.lightMode {
+    background-color: #ffffff;
+    color: #000000;
+} */
+

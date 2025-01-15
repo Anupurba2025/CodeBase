@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:globalalien
+        xmlns:tns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.example.org/AlienSchema AlienSchema.xsd"
+    <tns:alien aid="A1">
+    <tns:name>Navin</tns:name>
+<tns:salary>3000</tns:salary>
+</tns:alien>
+</tns:globalalien>

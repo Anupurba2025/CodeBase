@@ -1,0 +1,271 @@
+SPRING BOOT
+-------------------------------------------------------------------
+In enterprice market the most famous language is JAVA. and the most important framework for java is Spring framework.its started in 2003. It's first started to solve the problem of java EE.java EE is heavy and complex in nature. spring is lightweight and easy to use.
+we can build Enterprise Application , Web Application using spring framework.
+
+----------------------------------------------------------------------------
+DEPENDENCY INJECTION AND IOC
+-----------------------------
+Spring started with the concept of IOC. seems spring has lots of features but IOC should be the core of it.
+
+
+When we are talking about a typical application suc as web application or the enterprise application we want this application's to give our client - this can be a mobile application or a browser. and in the screen we want data, so most of the applications are data driven applications. typically this data will be storing in the database or from some external service no matter either it is sql or no sql..
+
+Now the question is how can we send the data to the client from the database..thats why we are using server side code. in java we are using servlets to do that.
+
+              ----------------------------------------
+              |  ---------     ---------     -------  |
+	      |  |   C   |     |   S   |     |  R   | | => DATABASE
+CLIENT    =>  |  |       |     |       |     |      | |
+              |  ---------     ---------     -------- |
+              -----------------------------------------
+                            SERVLET
+IN SERVLET typically we are having different layers.
+C = Controller Class
+S = Service Class
+R = Repository Class
+
+ROLE
+---------------------------------------------------------------------------
+Controller Class => Accept the client request.
+Service Class => Doing for the Business Logics.
+Repository Class => Connecting with the Database.
+
+In java everything is a object so work with object oriented programming.
+If you want to work with service in controller you have to create a object of service inside the controller.
+lets suppose we are having a large number of classes in an application, so every time to use it we need to create an object of that particular java class. that a huge work to do because when you creates a new object you need to take care of the whole cycle, its not only about creating a object, its all about destroying the object, managing the object.
+
+What if someone take cares of it, then IOC comes under the scenario.
+IOC stands for Inversion Of Control. its just a philosophy or a principle. We need some techniques to do it. and that's why the concept of Dependency Injection comes. Dependency Injection is the actual implementation of the IOC. so how we implement IOC in spring or java is with the help of dependency injection. Its a concrete technique. 
+
+so in short IOC is the Principle and DI is the Design Pattern.
+
+
+Without Dependency Injection
+-------------------------------
+public class Controller{
+  private service service;
+
+  public void handlerequest(){
+	service.doSomething();
+  }
+
+}
+
+public class Service{
+	public void doSomething(){
+		sout("Doing some work");
+	}
+}
+----------------------------------------------------------------
+There are three techniques to achieve the dependency Injection.
+
+1. Constructor Injection
+2. Setter Injection
+3. Field Injection
+
+
+CONSTRUCTOR INJECTION
+----------------------
+In a Controller class we can create a constructor class and in that we can pass the reference of the Service. and now since i need the service here, let's inject the object.
+
+CODE
+----
+
+public class Controller{
+  private service service;
+
+  public Controller(Service service){
+     this.service=service;
+  }
+
+  public void handlerequest(){
+	service.doSomething();
+  }
+
+}
+
+
+public class Service{
+	public void doSomething(){
+		sout("Doing some work");
+	}
+}
+
+-----------------------------------------------------------------------
+SETTER INJECTION
+
+You can create a setter method for that service reference and you can do the setter injection.
+
+CODE
+-----
+
+public class Controller{
+  private service service;
+
+  public void setService(Service service){
+     this.service=service;
+  }
+
+  public void handlerequest(){
+	service.doSomething();
+  }
+
+}
+
+public class Service{
+	public void doSomething(){
+		sout("Doing some work");
+	}
+}
+
+--------------------------------------------------------------------------
+FIELD INJECTION
+
+In JAVA we are having a concept of Loose Coupling.we dont have the concrete implementation of one class into the other class.
+
+CODE
+-----
+public class Controller{
+
+  @Autowired
+  private service service;
+
+  public void handlerequest(){
+	service.doSomething();
+  }
+
+}
+public class Service{
+	public void doSomething(){
+		sout("Doing some work");
+	}
+}
+---------------------------------------------------------------------------
+
+For suppose we want to build an application, we are having java code in our hand. and spring says how ever how many java classes we are having spring will take care of the object creation.
+
+Now let suppose we are having 1000 of java classes. Will spring able to handle it. yes of course Spring will handle it. but the question is - is it necessary all time to create an object of every class or to handle it. the answer is most of the time we don't even want the object of some java classes. But how can we declare to the spring application that we want object for some specific java classes. To make a conversation with the framework we need to specify it into the config file. it can be a xml file or it can be a property file. To run your application properly you have to configure your files properly.
+
+To run your web application you need an server.in terms of java we need something called tomcat server. although we are having multiple option. let say if you are building a web application in spring you need to have a tomcat server. That means in your machine even before u run ur code u make sure u install tomcat, configure it then only you can able to run the application. we can do this, but the problem is when we are having longer project to invest time in configuration will justified but what if we are having smaller project and need to start it . now a days most of the languages like python, JavaScript they have their frameworks such that you can start with your application in minutes. now that is the thing java will lacking way back. And that's why spring boot concept comes into picture.
+
+Now Spring Boot tells it will handle all the configuration related work. it helps to started with your project within few ,minutes.
+
+so the question arise..
+Does Spring boot is different from Spring..
+
+Not Exactly... underlying it all are a spring framework. In top of that one more layer of Spring Boot.
+
+ 			SPRING BOOT
+		      SPRING FRAMEWORK
+
+You can build your application directly by using a spring framework or if you want to make it easy you can use Spring Boot. It's an optional staff which helps to make your work faster. So basically we are using Spring Boot which is a Opinionated Framework which means it will give you certain things the way you want and simply use it to run your application.
+
+Any web application in java you can create a project and want to deploy it into the cloud, you need to create a .war file. war stands for Web Archive.
+Basically pushing your .war file to tomcat to run it. so we have multiple steps. Spring Boot says that we can create a jar file. The problem is we cant run the jar files in the tomcat. 
+
+Then how can it will work..
+what if rather than having a external tomcat you project has its own tomcat. So basically Spring Boot says if you are having a web App then it has a embedded tomcat. 
+
+There is certain issues with Spring Boot as well.
+-> By Default it will do lots of staff for you. It follows Convention Over Configuration. Sometimes we don't need those still Spring Boot will Configure.
+-> It will give you default staffs.. you want to configure of course you have to configure by yourself. If you want more control it's better to work with spring framework rather than spring boot.
+
+-----------------------------------------------------------------------
+DEPENDENCY INJECTION USING SPRING BOOT
+---------------------------------------
+
+CODE
+-----
+package com.telusko.dependencyInjection;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DependencyInjectionApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DependencyInjectionApplication.class, args);
+	}
+}
+
+
+
+
+In a project we are having several classes. We know for this Spring will automatically objects. The question is where.. In JVM we are having one continer called IOC Container, their it will create all the object of the java class that we want. It seems when we start with the project the first thing we want is that IOC container to find the objects.
+
+SpringApplication.run(DependencyInjectionApplication.class, args);
+
+This line will be responsible for creating that container.
+SpringApplication.run it simply runs the container.
+
+For Example
+------------
+package com.telusko.dependencyInjection;
+
+public class Dev {
+    public void build(){
+        System.out.println("working on awsome project");
+    }
+}
+
+public static void main(String[] args) {
+		SpringApplication.run(DependencyInjectionApplication.class, args);
+		Dev obj = new Dev();
+		obj.build();
+	}
+
+
+So basically if we are manually creating an object, then in JVM somewhere the Object will be created but not in the IOC Container.That means when you are creating an object then it's your responsibility to maintain the whole cycle of it.
+
+Now if we want Spring will take care of it then it should take the object from the IOC Container which is in JVM. Now the question is how can spring  have a contact with that container. We can get a hold into it. So if we are holding the reference of the container then we are good to go. The type of the IOC Container is of type Application Context.
+
+ApplicationContext context=SpringApplication.run(DependencyInjectionApplication.class, args);
+
+there is no need to create the Object for ApplicationContext. because spring will create the Object by itself.
+
+In the above line if we click on the run method we get to know that it will returns the Object of ConfigurableApplicationContext which extends the Interface ApplicationContext. That means this run is returning you the object of ApplicationContext.
+
+Now we are assuming that the object is already created in the IOC Container and we simply use it. For that we can use
+
+Dev obj = context.getBean(Dev.class);
+obj.build();
+
+
+@SpringBootApplication
+public class DependencyInjectionApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context=SpringApplication.run(DependencyInjectionApplication.class, args);
+		Dev obj = context.getBean(Dev.class);
+		obj.build();
+	}
+}
+
+Now if we simply do upto this then it show an error that "No qualifying bean of type 'com.telusko.dependencyInjection' available".
+
+This problem arise because we are assuming that the object should be there in the container. but practically the IOC Container is there for sure but No Object will be created.
+
+So Spring will not create the Object of java class by default. We have to tell for which class Spring need to creates the Object.
+
+So how can we interact with Spring Framework. We can use config class or Spring Boot or a java based configuration. We can actually use something called as Annotation. So on a top of your class whichever class Object You want just say this class is a component.
+
+
+@Component
+public class Dev {
+    public void build(){
+        System.out.println("working on awsome project");
+    }
+}
+
+------------------------------------------------------------------------
+AUTOWIRING
+-----------
+
+
+Just by using the annotation called @Component the Spring can understand that this will be the class that it's need to handle.
+
+Now the error "No qualifying bean of type 'com.telusko.dependencyInjection' available" is removed and it working fine. Now in this way we are having the dependency Injection. In this code we are having the Object of Dev and Spring is injecting that dependency.
+
+

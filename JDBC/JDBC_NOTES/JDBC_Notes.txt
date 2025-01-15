@@ -1,0 +1,189 @@
+JDBC
+
+==================
+JDBC stands for Java Database Connectivity. 
+
+To fetch the data from the database we have to file SQL query. 
+
+In real world scenario we are creating a GUI with help of java and users can click o a button and they are able to fetch the data without writing any queries. That means we need to connect our frontend application with the backend database, and to connect java with database we need a connectivity , we are using JDBC connectivity.
+
+whenever we want to connect java application with database we need some drivers. we are having four different types of drivers.
+1.ODBC Bridge=>use for MS Access
+2.Net_U API
+3.pure java driver
+
+
+Whenever you want to connect your java application to the database we have to use 7 steps
+
+ step 1: import the package (java.sql.*)
+ step 2: a. Load Driver 
+	 b. Register the Driver
+
+ step 3: Connecting or Establish the connection
+ step 4: Create the statement
+ step 5: Execute the query
+ step 6: Process the Result
+ step 7: close the connection
+
+STEP 2
+----------------------------------------------------
+For every application we are having different drivers..
+for Sql we are having the Driver called => com.mysql.jdbc.Driver
+
+We have to load this driver, but from which location we can load it..
+so for that we have to load a jar file or a library from the internet, and the library name is mysql-connector. in NetBeans this library will already exists, we have to simply import that.. For Eclipse => google -> we need to search for MySQL connector -> download jar file.
+
+How to register it..
+ 
+We are using the method name forName(), forName() is a reflection API method which helps to load your drivers.
+class.forName("com.mysql.jdbc.Driver")
+
+STEP 3 :
+---------------------------------------------------------
+In order to establish the connection we need to instantiate the interface called as Connection.
+
+STEP 4:
+------------------------------------------------
+Statement is of 3 types
+-> Statement
+-> Prepared Statement
+-> Callable Statement
+
+Statement -> when you want execute a query , you can execute the query with the help of statement object.
+
+Prepared Statement -> When you have a in-build query or a predefined query but you have different values we can use the Prepared Statement.
+
+Callable Statement -> If want to execute the PL (Programming Procedural Language in SQL) you can use Callable Statements...
+
+STEP 7:
+-----------------------------------------------------
+Get the Object of connection or get the Object of Statement and through this you can simply close it.
+
+
+
+Now how to write those statements in a programmer way -
+
+->import java.sql.*;
+-> Load the Driver
+	
+	Right click on Library folder inside your project properties -> add 	MySQL Connector driver.
+
+->Register the Driver
+	Class.forName("com.mysql.jdbc.Driver")
+
+-> Create the Connection
+	Connection is an interface directly through
+		Connection con = new Connection(); we can't instantiate 		
+		like this. So we need to search for method which implements 		
+		the Connection Interface, so the method name is 			
+		getConnection(" URL "," Username "," Password ");
+
+		=> URL for your database, in your dbms let suppose in my 		
+		SQL you can have different dbms, so to specify which dbms 		
+		you want to use you need to specify through the URL.
+		
+		=> To access the MySQL we need to specify the userName and 
+		   Password.
+	
+	Now how to call this getConnection(" URL "," Username "," Password ");
+		now this method is also belongs to some class and this 			
+		class name is DriverManager.
+	
+	getConnection is a static method so we can call this method through 	
+	its class name directly.
+
+=> Connection con = 
+	DriverManager.getConnection(" URL "," Username "," Password ");
+
+
+
+-> Create the OBJECT of Statement
+	Statement st = con.createStatement();
+
+->Execute the query
+	ResultSet rs = st.executeQuery("select * from student");
+
+	the table which we create will store under the object of ResultSet.
+
+-> How to process the results..
+	
+	To fetch all the values from table we are having one method called 
+	getInt() and getString().
+
+	For Suppose if we are using the getInt() then which Int value we 
+	are having...Initially the pointer is just before the first value 
+	of your table. We have to shift the pointer to the first location.
+	To shift it we are using the command rs.next();
+
+	Now after this if you give your next command rs.getInt(column_no);
+	It will give you the value. You can simply print it or store it.
+
+	rs.next();
+	rs.getInt(1) + " " + rs.getString(2) ;
+	rs.next() // it will move to next row
+
+	Instead of write it repeatedly we can simply use the loop
+	
+	while(rs.next()){
+		sout(rs.getInt(1) + " " + rs.getString(2));
+	}
+
+NOTE : rs.next() do two things -
+	- It will help to shift the pointer to the second line / row
+	- It will identify either the second row is exits or not.
+
+STEP 7:
+	st.close();
+	con.close();
+
+If we execute this code we can able to make the successful jdbc connection with the database.
+
+
+-------------------------------------------------------------------------
+
+
+
+In the above we are writing a query for fetch the values, we can also write the query for inserting values too.
+
+In SQL we are having DDL(Creating a structure of a database),
+		     DML(Insert or Delete the values),
+		     DQL(Fetching the values) Command.
+
+For DQL we are using the executeQuery();
+For UPDATE (DML Command) we are using executeUpdate();
+
+
+--------------------------------------------------------------------------
+
+NOTES - Although it gives the output but in console it shows like
+
+-> Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+
+To resolve this problem we can use...
+Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+===================================================================
+
+Reset the cursor to the beginning
+  => rs.beforeFirst();
+
+Notes :
+Statement st = con.createStatement();
+This statements are not working for using rs.beforeFirst();
+
+if we use this 
+The error message Operation not allowed for a result set of type ResultSet.TYPE_FORWARD_ONLY will come which indicates that the ResultSet you’re working with is of type TYPE_FORWARD_ONLY. This type only allows forward movement and does not support operations like beforeFirst().
+
+-----------------------------------------------------------------
+For a advance level project we need to use some design patterns. such as
+DAO -> Data Access Object.
+
+Whenever we are working with jdbc we can push our database stuff under this DAO Layer...
+
+
+
+
+
+
+
+	

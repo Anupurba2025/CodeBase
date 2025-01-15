@@ -1,0 +1,485 @@
+/* h1{
+    color: green;
+}
+p{
+    color: red;
+}
+button{
+    color:brown;
+    background-color:greenyellow;
+}
+body{
+    background-color: black;
+} */
+ 
+
+ /* practice set 1
+ #box{
+    background-color: blue;
+ }
+.heading{
+    color: red;
+} */
+
+
+/* text decoration */
+/* #p1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+#p2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; //fallback mechanism - priority set to first one,if not exists on users browser
+    text-transform: capitalize;
+}
+h1{
+    text-align: center;
+    text-decoration: blue wavy underline; //we can use MDN to check more
+}
+p{
+    text-align: start; //[start == left in english for css3] 
+}
+h2{
+    text-align: right;
+    text-decoration: line-through;
+} 
+a{
+    text-decoration: none;
+}
+#h1{
+    font-weight: normal;
+}
+#h2{
+    font-weight: bold;
+}
+#h3{
+    font-weight: lighter;
+}
+#h4{
+    font-weight: 600;
+}
+#h5{
+    font-weight: 900;
+} */
+
+
+/*practice set 2*/
+/*#outer{
+    font-size: 25px;
+    
+}
+#inner{
+    font-size: 10px;
+}
+
+div {
+    height: 150px;
+    background-color: pink;
+    width:700px;
+
+    border: 2px;
+    border-style: solid;
+    border-color:black;
+    border-radius: 10px;
+
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    margin-top: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+h1{
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+   
+    height: 40px;
+    width: 500px;
+    background-color: yellow;
+
+    border: 2px solid brown;
+    border-radius: 30%;
+
+    padding:1px 2px 3px 4px;
+
+     margin: 2px 2px 2px 2px; 
+}*/
+
+/* PRACTICE SET 3 */
+/* QUESTION 1 */
+/* div{
+    height: 100px;
+    width: 100px;
+    background-color: green;
+    border-radius: 50%;
+} */
+
+/* QUESTION 2 */
+/*
+ *{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgba(16, 7, 96, 0.443);
+}
+#navbar{
+    height: 50px;
+    background-color: black;
+    border: 2px solid white;
+    
+
+}
+#logo{
+    
+    color: #f4b60c;
+    
+}
+a{
+    color: white;
+    margin-right: 180px;
+    text-decoration: none;
+}
+button{
+    background-color: #f4b60c;
+    border: none;
+    color: white;
+} */
+
+/* DISPLAY PROPERTY */
+/* div{
+    background-color: rgb(186, 18, 96);
+    display: box;
+}
+button{
+    display: block;
+} */
+/*
+*{
+    height: 100px;
+    width: 100px;
+    margin: 25px;
+    padding: 25px;
+    
+    
+}
+ #div1{
+    display: block;
+    background-color: aqua;
+    
+}
+#div2{
+    display: block;
+    background-color: red;
+}
+#div3{
+    display: block;
+    background-color: blueviolet;
+} */
+
+
+/* PRACTICE QUESTION 4 */
+/* 
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgba(16, 7, 96, 0.443);
+}
+#navbar{
+    height: 50px;
+    background-color: black;
+    border: 2px solid white;
+    
+
+}
+#logo{
+    
+    color: #f4b60c;
+    
+}
+a{
+    color: white;
+    margin-right: 180px;
+    text-decoration: none;
+}
+button{
+    background-color: #f4b60c;
+    border: none;
+    color: white;
+}
+.content_box{
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+    display: inline-block;
+}
+#content{
+    height: 526px;
+}
+footer{
+    background-color:black;
+    color:#f4b60c;
+    
+    text-align: center;
+} */
+ 
+/* LEVEL 3 */
+/* REATIVE UNITS */
+/* % */
+ /* #box1{
+    height: 200px;
+    width: 100px;
+    background-color: green;
+    font-size: 10px;
+}
+#box2{
+    height: 10vh;
+    width: 40px;
+    background-color: yellow;
+    margin: 20%;
+    font-size: 2em; /* 2 times f parent font size (2*10=20px)*/
+    /*width: 5em; 5 times of its own font size.(5*20px=100px)*/
+    /*width: 5rem; /*by default font size value of body tag * 5 = width */
+    /* or we can say that the font size of root level or outer body tag */
+
+/*}  */
+
+/* position playground */
+/* div{
+    height: 100px;
+    width: 100px;
+    background-color: aqua;
+    border: 2px solid black;
+    display: inline-block;
+     
+} */
+/* #box1{
+    position: static;
+    [top,bottom,left,right,z-index is coming by default and fixed we cant change it]
+} */
+/* #box1{
+    position: sticky;
+    top: 10px;
+}
+#box2{
+    position: relative;
+    top: 10px;
+    right:1px;
+    z-index: 1;
+    
+}
+#box3{
+    position: absolute;
+    top: 2100px;
+    left: 200px; 
+}
+#box4{
+    position: fixed;
+    top: 0px;
+}
+ */
+
+
+ /* IMAGE */
+ /* div{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+ }
+ #box1{
+    background-image: url("animal.jpg");
+    background-size: cover;
+}
+ body{
+    background-image: url("animal.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+ } */
+
+ /* PRACTICE SET 5 */
+/* div{
+    height: 100px;
+    width: 100px;
+    background-image: url("animal.jpg");
+    background-size: cover;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+} */
+
+/* FLEX BOX */
+/* body{
+    text-align: center;
+} */
+/* #container{
+    height: 300px;
+    width: 800px;
+    background-color: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;  */
+    /* flex-direction: row-reverse; 
+    flex-direction: column; 
+    flex-direction: column-reverse; 
+    justify-content: flex-start;
+    justify-content: flex-end;*/
+    /* justify-content: center; */
+    /* justify-content:space-around;
+    justify-content: space-between; */
+    /* justify-content: space-evenly; */
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    /* align-items: flex-start; */
+    /* align-content: flex-start; */
+/* }
+div{
+    height: 100px;
+    width: 250px;
+    display: inline-block;
+     margin: 2px; 
+}
+#box2{
+    height: 200px;
+     align-self: flex-end; having the highest priority 
+    flex-shrink: 0.5; 
+    flex-grow: 1;
+}
+#box1{
+    flex-grow: 2;
+} */
+
+/* PRACTICE SET 6 */
+
+/* ul{
+    background-color: pink;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: red;
+}
+#outer{
+    height: 300px;
+    width: 300px;
+    background-color: slateblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#inner{
+    height: 100px;
+    width: 100px;
+    background-color: brown;
+} */
+
+/* MEDIA QUERIES */
+
+/* div{
+    height: 50px;
+    width: 50px;
+    background-color: pink;
+}
+
+@media(width:600px){
+    div{
+        background-color: red;
+    }
+    
+}
+@media(min-width:200px){
+
+    div{
+        background-color: green;
+    }
+} */
+
+/* PRACTICE SET 7 */
+/* div{
+    height: 60px;
+    width: 60px;
+    background-color: violet;
+}
+@media (max-width:300px){
+    div{
+        background-color: green;
+    }
+}
+@media(min-width:300px)and(max-width:400px){
+    div{
+        background-color: pink;
+    }
+}
+@media(min-width:400px)and(max-width:600px){
+    div{
+        background-color: red;
+    }
+}
+@media(min-width:600px){
+    div{
+        background-color: blue;
+    }
+} */
+
+/* LEVEL 5 */
+div{
+    height: 100px;
+    width: 100px;
+    background-color: pink;
+    position: absolute;
+    top:100px;
+    left:100px;
+    /* transition-property: all;
+    transition-duration: 2s;
+    transition-timing-function:steps(5);
+    transition-delay: 1s; */
+
+    /*transition: all 2s steps(3) 1s; 
+     transform: rotate(45deg);
+    transform: scale(1.5);
+     */
+     /* transition: all 2s ease-in;  */
+    
+    /* animation */
+    /* animation-name: colorAnimate;
+    animation-duration: 3s;
+    animation-timing-function: ease-in;
+    animation-delay: 2s; */
+    /* animation-iteration-count: 5; */
+    /* animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: normal; */
+    animation: colorAnimate 2s ease-in 0s infinite normal;
+}
+div:hover{
+    /*background-color: red;
+    color:antiquewhite;
+    transform: scale(1,2); 
+    transform: translate(20px);
+    transform: translateY(20px);
+    transform: translateY(-20px);
+    transform: translate(20px,20px); 
+    transform: skew(45deg);*/
+}
+div:active{
+    /* background-color: green; */
+}
+@keyframes colorAnimate{
+    from {background-color: aqua;}
+    to {background-color: red;}
+
+    from {left: 0px;}
+    to {right: 200px;}
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/AlienSchema"
+xmlns:tns="http://www.example.org/AlienSchema"
+
+elementFormDefault="qualified">
+<complexType name="AlienType">
+<sequence>
+    <element name="alien" type="tns:alientype" maxOccurs="3" minOccurs="1"></element>
+</sequence>
+</complexType>
+    <complexType name="alientype">
+        <sequence>
+            <element name = "name" type="string"></element>
+            <element name="salary" type="tns:mySal"></element>
+        </sequence>
+        <attribute name="aid" type="ID" use="required"></attribute>
+
+    </complexType>
+    <element name="globalalien" type="tns:alientype"></element>
+    <simpleType name="mySal">
+        <restriction base="integer">
+            <minInclusive value="1000"></minInclusive>
+            <maxInclusive value="10000"></maxInclusive>
+        </restriction>
+
+    </simpleType>
+</schema>
