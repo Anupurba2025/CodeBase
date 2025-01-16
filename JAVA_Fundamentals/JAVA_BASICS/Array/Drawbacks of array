@@ -1,0 +1,12 @@
+1.whenever we are creating an array it will store in a heap memory in a contigious location.
+  int arr[]=new int[4];
+  whenever we are declaring the size of the array once, we can not change it further.
+
+2. For searching element or assigning a new value to an array every time we should traverse the whole array for each case which is
+   very much time consuming.
+
+3. suppose we create an array of type int
+    int arr[][]=new int[5][];
+    so in this case we can not assign a value of different datatypes.
+
+To resolve this type of issues we are having the concepts of collection.
