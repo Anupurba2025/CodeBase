@@ -1,0 +1,338 @@
+POSTGRESQL TRAINING
+----------------------------------------------------------------------------------------------
+Difference in between PostgreSQL and my sql ?
+----------------------------------------------
+-> Database type
+   MySQL is a relational database, while PostgreSQL is an object-relational database.
+-> Data types
+   PostgreSQL supports more complex data types, including objects, arrays, and XML.
+-> Storage engines
+   MySQL supports 16 different storage engines, while PostgreSQL has a single, ACID-compliant        storage engine. 
+-> Programming languages supported
+   PostgreSQL supports a wider range of programming languages than MySQL, including C/C++, Delphi,      Erlang, Go, Java, JavaScript, JSON, Lisp, .NET, Python, and R.
+-> Supported index type
+   MySQL uses Binary Search Tree (B-Tree), while PostgreSQL uses many, including GIN and Hash.
+-> Supported procedure complexity
+   MySQL supports SQL syntaxes and stored procedures, while PostgreSQL supports advanced    procedures and stored procedures.
+
+NOTE - What is object Relational Database...
+ 		An object-relational database (ORD) is a database management system (DBMS) that 		combines relational and object-oriented features
+
+		-> Features
+		ORDs support complex data structures, user-defined data types, methods, multimedia 		objects, and references between tuples. They also support objects, classes, and 		inheritance in the database schemas and query language.
+		
+		-> Purpose
+		ORDs bridge the gap between relational databases and object-oriented modeling 			techniques. They aim to make it easier to store and manipulate data that's written 		in object-oriented programming languages.
+	
+		-> Components
+		ORDs are made up of both an RDBMS and an object-oriented database management system 		(OODBMS). They use a traditional database to store data, which is then accessed and 		manipulated using queries written in a query language, such as SQL. 
+
+
+
+Key differences: PostgreSQL vs MySQL
+--------------------------------------
+
+While PostgreSQL and MySQL are conceptually similar, there are many differences to consider before implementing them.
+
+ACID compliance
+-----------------
+Atomicity, consistency, isolation, and durability (ACID) are database properties that ensure a database remains in a valid state even after unexpected errors. For example, if you update a large number of rows but the system fails midway, no row should be modified.
+
+MySQL offers ACID compliance only when you use it with InnoDB and NDB Cluster storage engines or software modules. PostgreSQL is fully ACID compliant in all configurations.
+
+Concurrency control
+---------------------
+Multiversion concurrency control (MVCC) is an advanced database feature that creates duplicate copies of records to safely read and update the same data in parallel. When you use MVCC, multiple users can read and modify the same data simultaneously without compromising data integrity.
+
+MVCC varies by Storage Engine in MySQL. For example, MVCC is fully supported when you use the InnoDB storage engine. MVCC is not supported in the MyISAM storage engine. PostgreSQL supports MVCC in all configurations.
+
+Indexes
+--------
+Databases use indexes to retrieve data faster. You can index frequently accessed data by configuring the database management system to sort and store it differently from the other data.
+
+MySQL supports B-tree and R-tree indexing that stores hierarchically indexed data. PostgreSQL index types include trees, expression indexes, partial indexes, and hash indexes. There are more options to fine-tune your database performance requirements as you scale.
+
+Data types
+-----------
+MySQL is a purely relational database. PostgreSQL, on the other hand, is an object-relational database. This means that in PostgreSQL, you can store data as objects with properties. Objects are a common data type in many programming languages like Java and .NET. Objects support paradigms like parent-child relationships and inheritance.
+
+Working with PostgreSQL is more intuitive for database developers. PostgreSQL also supports other additional data types like arrays and XML.
+
+Views
+------
+A view is a data subset that the database system creates by pulling relevant data from multiple tables.
+
+While MySQL supports views, PostgreSQL offers advanced view options. For example, you can precompute some values in advance (like the total value of all orders over a given period) to create materialized views. Materialized views improve database performance for complicated queries.
+
+Stored procedures
+------------------
+Stored procedures are structured query language (SQL) queries or code statements you can write and save in advance. You can reuse the same code repeatedly, which makes database management tasks more efficient.
+
+Triggers
+---------
+A trigger is a stored procedure that runs automatically when a related event occurs in the database management system.
+
+In a MySQL database, you can only use AFTER and BEFORE triggers for SQL INSERT, UPDATE, and DELETE statements. That means the procedure will run automatically before or after the user modifies the data. In contrast, PostgreSQL supports the INSTEAD OF trigger, so you can run complex SQL statements using functions.
+
+While both MySQL and PostgreSQL support stored procedures, PostgreSQL allows you to call stored procedures written in languages other than SQL.
+
+--------------------------------------------------------------------------------------------------
+Difference between using GROUP BY Function in SQL and POSTGRESQL
+-----------------------------------------------------------------
+
+### **1. Basic Functionality**
+- In both SQL and PostgreSQL, `GROUP BY` is used to group rows with the same value into a single row. Then, you can use functions like `COUNT()`, `SUM()`, `AVG()` on these groups.
+
+For example:
+```sql
+SELECT category, COUNT(*)
+FROM sales
+GROUP BY category;
+```
+This works the same in SQL and PostgreSQL.
+
+---
+
+### **2. Column Aliases**
+- **SQL**: Most SQL databases don’t let you use **short names** (aliases) in `GROUP BY`. You have to use the original column name.
+- **PostgreSQL**: PostgreSQL is smarter! It allows you to use the alias (short name) in the `GROUP BY` clause.
+
+Example:
+```sql
+SELECT category AS cat, COUNT(*)
+FROM sales
+GROUP BY cat; -- Works in PostgreSQL, but not in many SQL databases.
+```
+
+---
+
+### **3. Positional References**
+- **SQL**: You must name the column explicitly in `GROUP BY`.
+- **PostgreSQL**: You can use the **position number** of the column instead of its name.
+
+Example:
+```sql
+SELECT category, SUM(amount)
+FROM sales
+GROUP BY 1; -- 1 refers to the first column in the SELECT list ("category").
+```
+
+---
+
+### **4. Advanced Grouping (Extra Features in PostgreSQL)**
+- **SQL**: Basic `GROUP BY` only groups by columns.
+- **PostgreSQL**: It supports advanced features like:
+  - **`ROLLUP`**: Adds subtotals and a grand total.
+  - **`CUBE`**: Generates all combinations of grouped data.
+  - **`GROUPING SETS`**: Custom combinations of grouped data.
+
+Example of **`ROLLUP`** in PostgreSQL:
+```sql
+SELECT category, product_id, SUM(amount)
+FROM sales
+GROUP BY ROLLUP(category, product_id);
+```
+This gives:
+1. Grouped by `category` and `product_id`.
+2. Subtotals for `category`.
+3. A grand total.
+
+---
+
+### **5. Complex Expressions in `GROUP BY`**
+- **SQL**: Usually, `GROUP BY` works only with column names.
+- **PostgreSQL**: You can group by calculations or custom expressions.
+
+Example:
+```sql
+SELECT category, amount / 10 AS discount
+FROM sales
+GROUP BY category, discount;
+```
+This groups by the calculated value (`amount / 10`).
+
+---
+
+### **6. Performance**
+- **SQL**: Performance depends on the database (e.g., MySQL, SQL Server, Oracle).
+- **PostgreSQL**: Optimized for `GROUP BY`, even for large datasets, and supports parallel processing for faster results.
+
+---
+
+### **7. Handling NULL Values**
+Both treat `NULL` as one group. No major difference here.
+
+---
+
+### **In Simple Words:**
+1. PostgreSQL is **more flexible** than standard SQL for `GROUP BY`. 
+2. PostgreSQL has **extra features** like `ROLLUP`, `CUBE`, and expressions.
+3. PostgreSQL allows **shortcuts** like using aliases or column positions.
+
+-------------------------------------------------------------------------------------------------
+GOOD PRACTICES TO DESIGN A DATABASE
+-------------------------------------
+In the context of **databases**, **standardization** refers to the process of structuring and managing data consistently to ensure efficiency, maintainability, interoperability, and adherence to best practices or industry standards. It involves defining consistent formats, rules, and protocols for how data is stored, accessed, and manipulated.
+
+---
+
+### **Key Aspects of Database Standardization**
+
+#### 1. **Data Format Standardization**
+Ensures that data is stored in a uniform format to make it easier to query, process, and share across systems.
+- **Example**: Storing dates in the `YYYY-MM-DD` format instead of multiple inconsistent formats like `MM/DD/YYYY` or `DD-MM-YYYY`.
+- **Benefit**: Reduces errors and simplifies data integration.
+
+#### 2. **Naming Conventions**
+Standardizing the naming of database objects (tables, columns, indexes, etc.) makes databases more readable and easier to maintain.
+- **Example**:
+  - Table names: Use singular nouns (e.g., `User` instead of `Users`).
+  - Column names: Use snake_case or camelCase consistently (`first_name` or `firstName`).
+- **Benefit**: Improves consistency and readability.
+
+#### 3. **Normalization**
+A process to eliminate redundancy and dependency by organizing data into multiple related tables.
+- **Example**: Breaking down a table with redundant data:
+  - **Before**: A single table with columns `customer_id`, `customer_name`, `order_id`, `order_date`.
+  - **After**: Two normalized tables:
+    1. `Customers(customer_id, customer_name)`
+    2. `Orders(order_id, order_date, customer_id)`
+- **Benefit**: Saves storage space and avoids anomalies during data insertion, deletion, or updates.
+
+#### 4. **Data Types**
+Using standardized and appropriate data types for columns ensures consistency across databases.
+- **Example**:
+  - Use `DATE` for dates, not `VARCHAR`.
+  - Use `DECIMAL` for currency values instead of `FLOAT` to avoid precision issues.
+- **Benefit**: Prevents data inconsistencies and ensures proper validation.
+
+#### 5. **Primary Keys and Foreign Keys**
+Establishing unique identifiers (primary keys) for records and relationships (foreign keys) between tables.
+- **Example**:
+  - Table `Orders` has a `customer_id` column linked to `Customers(customer_id)` via a foreign key.
+- **Benefit**: Maintains data integrity and ensures referential consistency.
+
+#### 6. **Indexing Standards**
+Defining rules for creating indexes (e.g., primary, unique, and composite indexes) to optimize query performance.
+- **Example**: Add an index on columns frequently used in `WHERE` clauses or `JOIN` conditions.
+- **Benefit**: Speeds up data retrieval.
+
+#### 7. **Access Control and Security**
+Standardizing how users and applications interact with the database to protect data from unauthorized access.
+- **Example**:
+  - Use **roles** for permissions instead of granting permissions directly to users.
+  - Encrypt sensitive data fields like passwords.
+- **Benefit**: Enhances security and compliance with regulations like GDPR or HIPAA.
+
+#### 8. **Stored Procedures and Queries**
+Standardizing the use of stored procedures and query design for common operations.
+- **Example**:
+  - Avoid hardcoding database names in queries.
+  - Use parameterized queries to prevent SQL injection.
+- **Benefit**: Promotes reusability and improves security.
+
+#### 9. **Coding Standards for SQL**
+- Consistently use **UPPERCASE** for SQL keywords (`SELECT`, `INSERT`) and lowercase for identifiers (`table_name`).
+- Avoid using `SELECT *`, specify column names instead.
+- Format SQL queries for readability:
+  ```sql
+  SELECT
+      customer_id,
+      customer_name
+  FROM
+      Customers
+  WHERE
+      customer_id = 123;
+  ```
+
+---
+
+### **Benefits of Database Standardization**
+1. **Data Consistency**: Ensures the same data is stored and interpreted consistently across the database.
+2. **Interoperability**: Simplifies data sharing and integration between different systems.
+3. **Efficiency**: Optimized queries and reduced redundancy improve performance.
+4. **Maintainability**: Easier to troubleshoot and modify the database as standards are followed.
+5. **Scalability**: Simplifies expansion and integration with new systems.
+
+---
+
+### **Examples of Database Standards**
+- Use `ISO 8601` for date and time formats (`YYYY-MM-DDTHH:MM:SS`).
+- Avoid reserved keywords for table or column names (e.g., `SELECT`, `USER`).
+- Always define constraints:
+  - `NOT NULL` for required fields.
+  - `UNIQUE` for columns with unique values.
+- Enforce foreign key relationships for data integrity.
+
+-------------------------------------------------------------------------------------------------
+DIFFERENCE IN BETWEEN SQL AND NOSQL
+-------------------------------------
+
+SQL -Databases are categorized as Relational Database Management System (RDBMS).
+no sql - NoSQL databases are categorized as Non-relational or distributed database system.
+
+sql - SQL databases have fixed or static or predefined schema.
+NoSQL - NoSQL databases have dynamic schema.
+
+sql-SQL databases display data in form of tables so it is known as table-based database.
+NoSQL - NoSQL databases display data as collection of key-value pair, documents, graph databases   or wide-column stores.
+
+sql - SQL databases are vertically scalable.
+NoSQL - NoSQL databases are horizontally scalable.
+
+sql- 
+SQL databases use a powerful language "Structured Query Language" to define and manipulate the data.
+NoSQL - In NoSQL databases, collection of documents are used to query the data. It is also called unstructured query language. It varies from database to database.
+
+sql - SQL databases are best suited for complex queries.
+NoSQL -NoSQL databases are not so good for complex queries because these are not as powerful as SQL queries.
+
+sql -SQL databases are not best suited for hierarchical data storage.
+NoSQL - NoSQL databases are best suited for hierarchical data storage.
+
+sql- MySQL, Oracle, SQLite, PostgreSQL and MS-SQL etc. are the example of SQL database.
+NoSQL - MongoDB, Bigtable, Redis, Raven DB, Cassandra, HBase, Neo4j, CouchDB etc. are the example of NoSQL database
+--------------------------------------------------------------------------------------------------Difference between yuga byte and PostgreSQL
+--------------------------------------------
+YugabyteDB and PostgreSQL are both database systems with different strengths and use cases: 
+Data distribution
+YugabyteDB is a distributed SQL database that automatically shards tables across multiple nodes. PostgreSQL is a single-node relational database that stores all data on a single machine. 
+Scalability
+YugabyteDB is designed for horizontal scalability, while PostgreSQL is a good choice for traditional single node database requirements. 
+Data corruption
+YugabyteDB uses independent compactions on all nodes to check data validity. PostgreSQL can be susceptible to data corruption if there is corruption at the storage level. 
+Primary key index
+YugabyteDB stores tables in a log-structured merge-tree (LSM) with the first level in memory, which ensures fast access by primary key. PostgreSQL stores rows in heap tables, which can take up more space and require more reads. 
+Other features
+PostgreSQL offers features like transaction support, concurrency control, and advanced querying capabilities. YugabyteDB offers features like built-in resilience, flexible disaster recovery, and global design patterns. 
+--------------------------------------------------------------------------------------------------
+
+Difference in between single node and multi node
+--------------------------------------------------
+Single-Node - The database operates on a single server or node.
+Multi-node - The database operates across multiple servers or nodes.
+
+single -Node - 	Centralized architecture.
+multi-node = Distributed architecture
+
+single-node = Vertically scalable (e.g., adding CPU, RAM, or storage to the server).
+multi-node = Horizontally scalable (e.g., adding more nodes/servers).
+
+single-node = All data is stored on the single server.
+multi-node = Data is partitioned and distributed across multiple nodes.
+
+single-node = performance
+Limited by the resources of a single server.
+multi-node = Can handle higher loads by distributing work across nodes.
+
+single-load = Low fault tolerance—if the single node fails, the entire database becomes unavailable.
+multi-node = High fault tolerance—if one node fails, others can take over.
+
+single-node = Suitable for small to medium applications or those with less demand for concurrent access.
+multi-node = Suitable for large-scale applications with high concurrency and large datasets.
+
+single-node = MySQL, PostgreSQL, or SQL Server running on a single machine.in NoSQL A single instance of MongoDB or Cassandra.
+multi-node = PostgreSQL configured with logical replication, sharding, or in a clustered environment (e.g., Citus for distributed PostgreSQL). In NoSQL it's Cassandra, MongoDB configured in a distributed setup.
+ 
+
+
